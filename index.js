@@ -15,6 +15,7 @@ if (!isValidUrl(srcUrl)) {
   throw new Error(`Invalid URL: ${srcUrl}`);
 }
 
+const host = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 8080;
 
 // process.setMaxListeners(0);
@@ -66,6 +67,10 @@ http.createServer((req, res) => {
     return res.end();
   }
   read(fileName, type, res, 10);
-}).listen(port);
+}).listen(port, host, (err, hostName) => {
+  if (err) {
+    return console.error('Unable to run');
+  }
+  console.log(`Server running at ${hostName}:${port}`);
+});
 
-console.log(`HTTP server listening on port ${port}`);
