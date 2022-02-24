@@ -1,0 +1,56 @@
+{
+  "name": "hls-proxy-seerver",
+  "version": "0.0.1",
+  "description": "A server that pulls an external HLS stream and serve it from the local storage",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "xo",
+    "clean": "rm -fR ./public",
+    "test": "npm run lint && npm run clean && node index.js",
+    "start": "pm2 start index.js --",
+    "stop": "pm2 stop index.js",
+    "logs": "pm2 logs",
+    "status": "pm2 status",
+    "reset": "npm run clean && pm2 flush && pm2 kill"
+  },
+  "dependencies": {
+    "hls-parser": "^0.6.2",
+    "hlx-lib": "0.0.29",
+    "pm2": "^4.4.1"
+  },
+  "devDependencies": {
+    "xo": "^0.48.0"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "rules": {
+      "ava/no-unknown-modifiers": 0,
+      "camelcase": 0,
+      "capitalized-comments": 0,
+      "dot-notation": 0,
+      "import/no-dynamic-require": 0,
+      "import/order": 0,
+      "new-cap": 0,
+      "no-cond-assign": 0,
+      "no-mixed-operators": 0,
+      "no-multi-assign": 0,
+      "no-new": 0,
+      "no-use-extend-native/no-use-extend-native": 0,
+      "node/prefer-global/buffer": 0,
+      "node/prefer-global/process": 0,
+      "padding-line-between-statements": 0,
+      "quotes": 0,
+      "unicorn/catch-error-name": 0,
+      "unicorn/filename-case": 0,
+      "unicorn/no-zero-fractions": 0,
+      "unicorn/prefer-module": 0,
+      "unicorn/prevent-abbreviations": 0,
+      "unicorn/no-useless-promise-resolve-reject": 0
+    }
+  },
+  "keywords": ["HLS", "streaming", "video", "audio"],
+  "author": "Kuu Miyazaki",
+  "license": "MIT"
+}
